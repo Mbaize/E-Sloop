@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.lelander.mbaize.e_sloop.ProfileDisplay">
+
+    <TextView
+        android:text="@string/profile_display_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/profile_display_header"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/user_name"
+        android:id="@+id/UserNameDisplay"
+        android:layout_below="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="N/A"
+        android:id="@+id/NameDisplay"
+        android:layout_alignTop="@id/UserNameDisplay"
+        android:layout_toRightOf="@+id/UserNameDisplay"
+        android:layout_marginLeft="120dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/position"
+        android:id="@+id/Position"
+        android:layout_below="@+id/UserNameDisplay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="N/A"
+        android:id="@+id/PositionDisplay"
+        android:layout_below="@+id/NameDisplay"
+        android:layout_alignLeft="@+id/NameDisplay"
+        android:layout_alignStart="@+id/NameDisplay" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/location"
+        android:id="@+id/Location"
+        android:layout_below="@+id/Position"        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="N/A"
+        android:id="@+id/LocationDisplay"
+        android:layout_below="@+id/PositionDisplay"
+        android:layout_alignLeft="@+id/PositionDisplay"
+        android:layout_alignStart="@+id/PositionDisplay" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/experience"
+        android:id="@+id/Experience"
+        android:layout_below="@+id/Location"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="N/A"
+        android:id="@+id/ExperienceDisplay"
+        android:layout_below="@+id/LocationDisplay"
+        android:layout_alignLeft="@+id/LocationDisplay"
+        android:layout_alignStart="@+id/LocationDisplay" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/comments"
+        android:id="@+id/Comments"
+        android:layout_below="@+id/Experience"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update Profile"
+        android:id="@+id/button"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="startProfileUpdate" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/years"
+        android:id="@+id/yearsTextView"
+        android:layout_below="@+id/LocationDisplay"
+        android:layout_toRightOf="@+id/ExperienceDisplay"
+        android:layout_marginLeft="3dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/comments_placeholder"
+        android:id="@+id/commentsDisplay"
+        android:layout_below="@+id/Comments"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/profile_display_header"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

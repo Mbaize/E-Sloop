@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lelander.mbaize.e_sloop" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="19" />
+
+    <!-- To access Google+ APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--
+     To retrieve OAuth 2.0 tokens or invalidate tokens to disconnect a user. This disconnect
+     option is required to comply with the Google+ Sign-In developer policies
+    -->
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+
+    <!-- To retrieve the account name (email) as part of sign-in: -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+
+    <!-- To enable Parse.com's SDK -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but are recommended.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <application
+        android:name=".ParseApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/sailboat_thumb"
+        android:label="@string/app_name"
+        android:theme="@style/SeafoamAppTheme" >
+        <activity
+            android:name=".DispatchActivity"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".ProfileUpdate"
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ProfileDisplay"
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity android:name=".PositionAvailableView" >
+        </activity>
+        <activity
+            android:name=".PostPositionAvailable"
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".PostPositionWanted"
+            android:label="@string/app_name"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchFilterPositionAvailable"
+            android:label="@string/title_activity_search_filter"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:label="@string/title_activity_splash"
+            android:parentActivityName=".MainActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".LoginParse"
+            android:label="@string/title_activity_login_parse"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SignUpOrLogInActivity"
+            android:label="@string/title_activity_sign_up_or_log_in"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="@string/title_activity_sign_up"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".BoatViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_boat_view"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/FullscreenTheme" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchFilterPositionWanted"
+            android:label="@string/title_activity_search_filter_position_wanted"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchResultsPositionAvailable"
+            android:label="@string/title_activity_search_results_position_available"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".SearchResultsPositionWanted"
+            android:label="@string/title_activity_search_results_position_wanted"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".PositionWantedView"
+            android:label="@string/title_activity_position_wanted_view"
+            android:parentActivityName=".MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.lelander.mbaize.e_sloop.MainActivity" />
+        </activity>
+        <activity
+            android:name=".ProfilePictureViewActivity"
+            android:label="@string/title_activity_profile_picture_view" >
+        </activity>
+    </application>
+
+</manifest><!--
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <application>
+        <activity android:name="com.lelander.mbaize.e_sloop.MainActivity"
+            android:label="@string/title_activity_main"
+            >
+        </activity>
+    </application>
+
+</manifest>
+>>>>>>> Added
+-->

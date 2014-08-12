@@ -1,0 +1,327 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.lelander.mbaize.e_sloop.PostPositionWanted">
+
+        <TextView
+            android:text="@string/position_wanted_q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/position_wanted_header"
+            android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Captain"
+            android:id="@+id/captainWantedCheckBox"
+            android:layout_below="@+id/position_wanted_header"
+            android:layout_alignParentLeft="true"
+            android:checked="false"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Crew"
+            android:id="@+id/crewWantedCheckBox"
+            android:layout_below="@+id/position_wanted_header"
+            android:layout_toRightOf="@+id/captainWantedCheckBox"
+            android:checked="false"
+            android:onClick="onCheckboxClicked"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Mate"
+            android:id="@+id/firstMateWanted"
+            android:layout_below="@+id/crewWantedCheckBox"
+            android:layout_centerHorizontal="true"
+            android:checked="false"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Second Mate"
+            android:id="@+id/secondMateWanted"
+            android:checked="false"
+            android:layout_below="@+id/firstMateWanted"
+            android:layout_alignStart="@+id/firstMateWanted"
+            android:visibility="gone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/years_experience_had_q"
+            android:id="@+id/yearsExperienceHadQ"
+            android:layout_below="@+id/secondMateWanted"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp" />
+
+        <Spinner
+            android:id="@+id/experience_years_spinnerQ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:visibility="visible"
+            android:layout_below="@+id/yearsExperienceHadQ"
+            android:layout_centerHorizontal="true"
+            android:minHeight="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/typeSailingWantedQ"
+            android:id="@+id/typeSailingQ"
+            android:layout_below="@+id/experience_years_spinnerQ"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/commercial"
+            android:id="@+id/commercialCheckBox"
+            android:layout_below="@+id/typeSailingQ"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/racing"
+            android:id="@+id/racingCheckBox"
+            android:checked="false"
+            android:layout_below="@+id/typeSailingQ"
+            android:layout_toRightOf="@+id/commercialCheckBox" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/recreational"
+            android:id="@+id/recreationalCheckBox"
+            android:checked="false"
+            android:layout_below="@+id/typeSailingQ"
+            android:layout_toRightOf="@+id/racingCheckBox" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/when_available_sailing_q"
+            android:id="@+id/whenAvailableSailingQ"
+            android:layout_below="@+id/postYawlWantedCheckBox"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/toPrompt"
+            android:id="@+id/toAvailableDate"
+            android:layout_alignTop="@+id/fromAvailableDateTextView"
+            android:layout_toLeftOf="@+id/recreationalCheckBox"
+            android:layout_marginBottom="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/fromPrompt"
+            android:id="@+id/fromAvailableDateTextView"
+            android:layout_below="@+id/whenAvailableSailingQ"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:text="@string/select_date"
+            android:id="@+id/wantedToDateButton"
+            android:layout_below="@+id/wantedToDateTextView"
+            android:layout_alignLeft="@+id/wantedToDateTextView"
+            android:layout_alignStart="@+id/wantedToDateTextView" />
+
+        <Button
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:text="@string/select_date"
+            android:id="@+id/wantedFromDateButton"
+            android:layout_below="@+id/wantedFromDateTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/wantedFromDateTextView"
+            android:layout_below="@+id/fromAvailableDateTextView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:text="@string/dateGeneric" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/dateGeneric"
+            android:id="@+id/wantedToDateTextView"
+            android:layout_below="@+id/toAvailableDate"
+            android:layout_alignLeft="@+id/toAvailableDate"
+            android:layout_alignStart="@+id/toAvailableDate" />
+
+        <Button
+            android:id="@+id/postPositionWantedButton"
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:text="@string/post_position"
+            android:background="@color/seafoamgreen"
+            android:onClick="PostPosition"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_below="@+id/emailContactPostWanted"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="145dp"
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_post_button"
+            android:id="@+id/cancelPostWantedButton"
+            android:onClick="cancelPost"
+            android:background="@color/seafoamgreen"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_alignTop="@+id/postPositionWantedButton"
+            android:layout_alignRight="@+id/recreationalCheckBox"
+            android:layout_alignEnd="@+id/recreationalCheckBox" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/emailContactPostWanted"
+            android:hint="@string/email_address"
+            android:layout_below="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/contactPrompt"
+            android:id="@+id/textView"
+            android:layout_below="@+id/wantedFromDateButton"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp" />
+
+        <TextView
+            android:text="@string/search_boat_type_q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textView2"
+            android:layout_below="@+id/commercialCheckBox"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catamaran"
+            android:id="@+id/postWantedCatamaranCheckBox"
+            android:checked="false"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentLeft="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/catboat"
+            android:id="@+id/postWantedCatboatCheckBox"
+            android:checked="false"
+            android:layout_below="@+id/textView2"
+            android:layout_toRightOf="@+id/postWantedCatamaranCheckBox" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ketch"
+            android:id="@+id/postWantedKetchCheckBox"
+            android:layout_alignTop="@+id/postWantedCatboatCheckBox"
+            android:layout_toRightOf="@+id/postWantedCatboatCheckBox"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schooner"
+            android:id="@+id/postWantedSchoonerCheckBox"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/postWantedKetchCheckBox"
+            android:layout_alignParentLeft="true"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sloop"
+            android:id="@+id/postWantedSloopCheckBox"
+            android:checked="false"
+            android:layout_alignTop="@+id/postWantedSchoonerCheckBox"
+            android:layout_toRightOf="@+id/postWantedSchoonerCheckBox" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sunfish"
+            android:id="@+id/postWantedSunfishCheckBox"
+            android:layout_below="@+id/postWantedCatboatCheckBox"
+            android:layout_toRightOf="@+id/postWantedSloopCheckBox"
+            android:checked="false" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yawl"
+            android:id="@+id/postYawlWantedCheckBox"
+            android:checked="false"
+            android:layout_below="@+id/postWantedSunfishCheckBox"
+            android:layout_alignParentLeft="true" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/any_boat"
+            android:id="@+id/postWantedAnyCheckBox"
+            android:layout_below="@+id/postWantedSchoonerCheckBox"
+            android:layout_toRightOf="@+id/postYawlWantedCheckBox"
+            android:checked="false" />
+
+    </RelativeLayout>
+</ScrollView>

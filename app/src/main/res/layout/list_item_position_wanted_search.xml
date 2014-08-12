@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:background="@drawable/rounded_corner"
+    android:focusableInTouchMode="true">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="160dp"
+        android:id="@+id/positionWantedProfileImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/sailboat_thumb"
+        android:paddingLeft="3dp"
+        android:layout_alignBottom="@+id/listItemWantedEmail"
+        android:onClick="showFullProfileImage"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/position_wanted"
+        android:textSize="16sp"
+        android:id="@+id/listItemPositionWantedPrompt"
+        android:paddingLeft="5dp"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/positionWantedProfileImage"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Captain, First Mate, Deckhand, Engineer"
+        android:id="@+id/list_item_position_wanted"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:layout_below="@+id/listItemPositionWantedPrompt"
+        android:layout_toRightOf="@+id/positionWantedProfileImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/experience_had_prompt"
+        android:id="@+id/listItemExperienceHadPrompt"
+        android:paddingLeft="5dp"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/list_item_position_wanted"
+        android:layout_toRightOf="@+id/positionWantedProfileImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11 to 20 Years"
+        android:id="@+id/listItemExperienceHad"
+        android:textSize="16sp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/list_item_position_wanted"
+        android:layout_toRightOf="@+id/listItemExperienceHadPrompt" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boat type(s):"
+        android:id="@+id/listItemPositionWantedBoatPrompt"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:layout_below="@+id/listItemWantedBoatingActivityPrompt"
+        android:layout_toRightOf="@+id/positionWantedProfileImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boat Placeholder"
+        android:id="@+id/listItemWantedBoatType"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/listItemWantedBoatingActivityPrompt"
+        android:layout_toRightOf="@+id/listItemPositionWantedBoatPrompt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact email:"
+        android:id="@+id/listItemWantedEmailPromptTextView"
+        android:textSize="16sp"
+        android:layout_toRightOf="@+id/positionWantedProfileImage"
+        android:layout_below="@+id/listItemWantedBoatType"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_placeholder"
+        android:id="@+id/listItemWantedEmail"
+        android:layout_below="@+id/listItemWantedEmailPromptTextView"
+        android:layout_alignLeft="@+id/listItemWantedEmailPromptTextView"
+        android:layout_alignStart="@+id/listItemWantedEmailPromptTextView"
+        android:textSize="16sp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boatingActivityPrompt"
+        android:id="@+id/listItemWantedBoatingActivityPrompt"
+        android:textSize="16sp"
+        android:layout_below="@+id/listItemExperienceHadPrompt"
+        android:layout_toRightOf="@+id/positionWantedProfileImage"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boatingActivityAvailablePlaceholder"
+        android:id="@+id/listItemBoatingActivityWantedPlaceholder"
+        android:layout_below="@+id/listItemExperienceHadPrompt"
+        android:layout_toRightOf="@+id/listItemWantedBoatingActivityPrompt"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp" />
+
+</RelativeLayout>

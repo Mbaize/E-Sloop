@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Search / will display always -->
+    <item android:id="@+id/action_log_in"
+        android:icon="@drawable/ic_action_search"
+        android:title="@string/log_in"
+        android:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_search_filter"
+        android:icon="@drawable/ic_action_search"
+        android:title="@string/action_search"
+        android:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_profile"
+        android:title="@string/action_profile"
+        android:icon="@drawable/ic_action_person"
+        android:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_post_available"
+        android:title="@string/action_post_available"
+        android:showAsAction="never"/>
+
+    <item android:id="@+id/action_post_wanted"
+        android:title="@string/action_post_wanted"
+        android:showAsAction="never"/>
+
+    <!-- Help -->
+    <item android:id="@+id/action_position_wanted_search"
+        android:title="@string/position_wanted_search"
+        android:showAsAction="never"/>
+
+    <item android:id="@+id/action_position_available_search"
+        android:title="@string/position_available_search"
+        android:showAsAction="never"/>
+    <!-- Logout -->
+    <item android:id="@+id/action_log_out"
+        android:icon="@drawable/ic_action_help"
+        android:title="@string/action_log_out"
+        android:showAsAction="never"/>
+
+    <item android:id="@+id/action_map"
+        android:icon="@drawable/ic_action_help"
+        android:title="@string/action_map"
+        android:showAsAction="ifRoom"/>
+</menu>

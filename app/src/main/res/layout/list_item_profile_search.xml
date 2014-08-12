@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    android:background="@drawable/rounded_corner">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_height="80dp"
+            android:layout_width="80dp"
+            android:id="@+id/imageView"
+            android:src="@drawable/sailboat_thumb"
+            />
+        <TextView
+            android:id="@+id/list_item_profile_search_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="First Last" />
+        <TextView
+            android:id="@+id/list_item_profile_search_textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="Position" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/r2c1"
+            android:text="sailing type"
+            android:layout_height="80dp" />
+        <TextView
+            android:id="@+id/r2c2"
+            android:text="location"
+            android:layout_height="80dp"/>
+        <TextView
+            android:id="@+id/r2c3"
+            android:text="experience"
+            android:layout_height="80dp"/>
+    </TableRow>
+</TableLayout>

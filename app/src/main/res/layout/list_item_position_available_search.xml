@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    android:background="@drawable/rounded_corner"
+    android:focusableInTouchMode="true">
+
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="160dp"
+        android:id="@+id/boatImage"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/sailboat_thumb"
+        android:paddingLeft="3dp"
+        android:layout_alignBottom="@+id/email"
+        android:onClick="showFullBoat"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/boatImage"
+        android:text="Position(s) available:"
+        android:textSize="16sp"
+        android:id="@+id/crewWantedPrompt"
+        android:paddingLeft="5dp"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Captain, First Mate, Deckhand, Engineer"
+        android:id="@+id/crewWanted"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp"
+        android:layout_below="@+id/crewWantedPrompt"
+        android:layout_toRightOf="@+id/boatImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Experience preferred:"
+        android:id="@+id/experiencePrefPrompt"
+        android:paddingLeft="5dp"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/boatingActivityPrompt"
+        android:layout_toRightOf="@+id/boatImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11 to 20 Years"
+        android:id="@+id/experiencePref"
+        android:textSize="16sp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/boatingActivityPrompt"
+        android:layout_toRightOf="@+id/experiencePrefPrompt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Departure:"
+        android:id="@+id/locationPrompt"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/experiencePref"
+        android:layout_toRightOf="@+id/boatImage"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Martha's Vineyard, MA"
+        android:id="@+id/departure"
+        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
+        android:layout_alignTop="@+id/locationPrompt"
+        android:layout_toRightOf="@+id/locationPrompt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boat type:"
+        android:id="@+id/boatPrompt"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/crewWanted"
+        android:layout_alignLeft="@+id/crewWanted"
+        android:layout_alignStart="@+id/crewWanted"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Boat Placeholder"
+        android:id="@+id/boatType"
+        android:paddingLeft="10dp"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:layout_below="@+id/crewWanted"
+        android:layout_toRightOf="@+id/boatPrompt" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Destination:"
+        android:id="@+id/destinationPrompt"
+        android:layout_below="@+id/locationPrompt"
+        android:layout_toRightOf="@+id/boatImage"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="location placeholder"
+        android:id="@+id/destination"
+        android:layout_alignBottom="@+id/destinationPrompt"
+        android:layout_toRightOf="@+id/destinationPrompt"
+        android:textSize="16sp"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact email:"
+        android:id="@+id/emailPromptTextView"
+        android:textSize="16sp"
+        android:layout_below="@+id/destinationPrompt"
+        android:layout_toRightOf="@+id/boatImage"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_placeholder"
+        android:id="@+id/email"
+        android:layout_below="@+id/emailPromptTextView"
+        android:layout_alignLeft="@+id/emailPromptTextView"
+        android:layout_alignStart="@+id/emailPromptTextView"
+        android:textSize="16sp"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boatingActivityPrompt"
+        android:id="@+id/boatingActivityPrompt"
+        android:textSize="16sp"
+        android:layout_below="@+id/boatPrompt"
+        android:layout_toRightOf="@+id/boatImage"
+        android:paddingTop="5dp"
+        android:paddingLeft="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/boatingActivityAvailablePlaceholder"
+        android:id="@+id/boatingActivityAvailablePlaceholder"
+        android:layout_below="@+id/boatType"
+        android:layout_toRightOf="@+id/boatingActivityPrompt"
+        android:textSize="16sp"
+        android:layout_marginTop="5dp"
+        android:paddingLeft="5dp" />
+
+</RelativeLayout>
