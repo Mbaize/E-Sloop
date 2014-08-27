@@ -28,6 +28,7 @@ public class SearchFilterPositionAvailable extends ActionBarActivity implements 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_search_filter_position_available);
 
         //Create experience_years_captain_spinner

@@ -1,16 +1,22 @@
 package com.lelander.mbaize.e_sloop;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -22,94 +28,79 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
 
-    /* Request code used to invoke sign in user interactions. *//*
-    private static final int RC_SIGN_IN = 0;
+    public String[] mDrawerOptions;
+    public DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private ListView mDrawerList;
 
-    // Google client to interact with Google API
-    private GoogleApiClient mGoogleApiClient;
 
-    private boolean mIntentInProgress;*/
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (savedInstanceState == null) {
-            getFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
 
-        /*Intent intent = new Intent(this, SplashActivity.class);
-        startActivity(intent);*/
+        mDrawerOptions = getResources().getStringArray(R.array.drawer_array);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        setContentView(R.layout.activity_main);
-
-        Parse.initialize(this, "6G1HYLdyVlXlDVubmd1lARmdpYWgo8I9a62oSXGK", "SRYNStFiHicEuU71LphkRfOCB9Hu6EqMjc5oBUZ1");
-
-        ParseUser user = new ParseUser();
-        user.setUsername("Captain Hook");
-        user.setPassword("my pass");
-        user.setEmail("hook@esloop.com");
-
-        // other fields can be set just like with ParseObject
-        user.put("phone", "650-555-hook");
-
-        /*user.signUpInBackground(new SignUpCallback() {
-            public void done(ParseException e) {
-                if (e == null) {
-                    // Hooray! Let them use the app now.
-                    Toast.makeText(MainActivity.this, "No Parse error!", Toast.LENGTH_LONG).show();
-                } else {
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
-                    Toast.makeText(MainActivity.this, e.toString(), Toast.LENGTH_LONG).show();
-                }
+        // ActionBarDrawerToggle ties together the the proper interactions
+        // between the sliding drawer and the action bar app icon
+        mDrawerToggle = new ActionBarDrawerToggle((Activity)
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
+                R.string.drawer_open,  /* "open drawer" description for accessibility */
+                R.string.drawer_close  /* "close drawer" description for accessibility */
+        ) {
+            public void onDrawerClosed(View view) {
+                //Below doesn't seem necessary since the title will be determined by the new activity, since not using fragments
+                getActionBar().setTitle(R.string.app_name);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
             }
-        });*/
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
-        if (currentUser != null) {
-            // do stuff with the user
-            Toast.makeText(this, "CurrentUser exists", Toast.LENGTH_LONG).show();
-        } else {
-            // show the signup or login screen
-            Toast.makeText(this, "NO CurrentUser", Toast.LENGTH_LONG).show();
-           /* Intent intent = new Intent(this, ParseLoginActivity.class);
-            startActivity(intent);*/
-        }
-        /*if (mGoogleApiClient == null) {
-            // Initializing google plus api client
-            mGoogleApiClient = new GoogleApiClient.Builder(this)
-                    .addConnectionCallbacks(this)
-                    .addOnConnectionFailedListener(this).addApi(Plus.API, null)
-                    .addScope(Plus.SCOPE_PLUS_LOGIN).build();
+            public void onDrawerOpened(View drawerView) {
+                //Below doesn't seem necessary since the title will be determined by the new activity, since not using fragments
+                getActionBar().setTitle(R.string.menu);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
 
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+        // enable ActionBar app icon to behave as action to toggle nav drawer
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
+
+
+
+        // Set the adapter for the list view
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item_drawer, R.id.drawerTextView, mDrawerOptions));
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+        /*if (savedInstanceState == null) {
+            selectItem(0);
         }*/
 
 
-
-        //The code below is unnecessary since onConnect isn't called until onStart, which is after onCreate
-        /*if (mGoogleApiClient.isConnected()) {
-            Toast.makeText(this, "Client connected!", Toast.LENGTH_LONG).show();
-        }
-        if (!mGoogleApiClient.isConnected()) {
-            Toast.makeText(this, "Client NOT connected!", Toast.LENGTH_LONG).show();
-        }*/
     }
 
-
-    /*protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
-        if (requestCode == RC_SIGN_IN) {
-            mIntentInProgress = false;
-
-            if (!mGoogleApiClient.isConnecting()) {
-                mGoogleApiClient.connect();
-            }
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
         }
-    }*/
+    }
+
+    private void selectItem(int position) {
+        switch (position) {
+            case 0:
+                Intent intent0 = new Intent(this, SearchFilterPositionAvailable.class);
+                startActivity(intent0);
+                break;
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -165,52 +156,23 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
-
-
-    /*@Override
-    public void onConnectionSuspended(int i) {
-        mGoogleApiClient.connect();
-
-    }*/
-
-    /*@Override
-    public void onConnectionFailed(ConnectionResult result) {
-        Toast.makeText(this, "Connection failed", Toast.LENGTH_LONG).show();
-        if (!mIntentInProgress && result.hasResolution()) {
-            try {
-                mIntentInProgress = true;
-                result.startResolutionForResult(this,
-                        RC_SIGN_IN);
-            } catch (IntentSender.SendIntentException e) {
-                // The intent was canceled before it was sent.  Return to the default
-                // state and attempt to connect to get an updated ConnectionResult.
-                Toast.makeText(this, "Connection FAILED", Toast.LENGTH_LONG).show();
-                mIntentInProgress = false;
-                mGoogleApiClient.connect();
-            }
-        }
-    }*/
-
-   /* public void onConnected(Bundle connectionHint) {
-        // We've resolved any connection errors.  mGoogleApiClient can be used to
-        // access Google APIs on behalf of the user.
-        Toast.makeText(MainActivity.this, "mGoogleApiClient connected!", Toast.LENGTH_LONG).show();
-        *//*Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);*//*
-    }
-    */
-
-    protected void onStop() {
-        super.onStop();
-
-        /*if (mGoogleApiClient.isConnected()) {
-            mGoogleApiClient.disconnect();
-        }*/
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        mDrawerToggle.syncState();
     }
 
-    /**
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        mDrawerToggle.onConfigurationChanged(newConfig);
+    }
+
+}
+    /*
+    *//**
      * A placeholder fragment containing a simple view.
-     */
+     *//*
     public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
@@ -237,9 +199,9 @@ public class MainActivity extends ActionBarActivity {
 
             ListView listView = (ListView) rootView.findViewById(R.id.listview_profile_search);
             listView.setAdapter(adapter);
-            /*ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
-            image.setImageResource(R.drawable.sailboat_thumb);*/
+            *//*ImageView image = (ImageView) rootView.findViewById(R.id.imageView);
+            image.setImageResource(R.drawable.sailboat_thumb);*//*
             return rootView;
         }
     }
-}
+}*/

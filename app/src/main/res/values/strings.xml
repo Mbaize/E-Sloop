@@ -29,6 +29,7 @@
     <string name="hint_location">Enter location</string>
     <string name="location">Location:</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu">Menu</string>
     <string name="photo_prompt">Upload photo:</string>
     <string name="position">Position:</string>
     <string name="profile_display_header">Your Profile</string>
@@ -44,13 +45,14 @@
     <string name="update_profile_button">Update profile</string>
 
     <string-array name="experience_years_array">
-        <item>None</item>
-        <item>1 to 3</item>
-        <item>4 to 7</item>
-        <item>8 to 10</item>
-        <item>11 to 20</item>
-        <item>21 to 30</item>
-        <item>30+</item>
+        <item>0</item>
+        <item>1</item>
+        <item>4</item>
+        <item>7</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>30</item>
     </string-array>
     <string-array name="boat_type_array">
         <item>N/A</item>
@@ -61,6 +63,15 @@
         <item>Sloop</item>
         <item>Sunfish</item>
         <item>Yawl</item>
+    </string-array>
+    <string-array name="drawer_array">
+        <item>Search positions available</item>
+        <item>Search positions wanted</item>
+        <item>Post position available</item>
+        <item>Post position wanted</item>
+        <item>Profile</item>
+        <item>Log in</item>
+        <item>Log out</item>
     </string-array>
 
     <string name="title_activity_profile_display">ProfileDisplay</string>
@@ -148,7 +159,7 @@
     <string name="any_check_box">Any</string>
     <string name="email_address">Email address</string>
     <string name="title_activity_search_filter_position_wanted">SearchFilterPositionWanted</string>
-    <string name="years">years</string>
+    <string name="years">year(s)</string>
     <string name="comments_placeholder">(Comments placeholder)</string>
     <string name="upload_photo">Upload photo</string>
     <string name="search_position_wanted_posting">Find people looking for a position as a:</string>
@@ -163,5 +174,13 @@
     <string name="position_wanted">Position(s) wanted:</string>
     <string name="experience_had_prompt">Years of experience:</string>
     <string name="title_activity_search_results_position_available">Position Available Search Results</string>
+    <string name="drawer_list_item_text">Drawer list item text</string>
+    <string name="drawer_open">open drawer</string>
+    <string name="drawer_close">close drawer</string>
+    <string name="additional_info">Additional info:</string>
+    <string name="add_info_placeholder">Additional information placeholder</string>
+    <string name="crew_experience_prompt">Crew experience:</string>
+    <string name="captainExperiencePrompt">Captain experience:</string>
+    <string name="na">N/A</string>
 
 </resources>

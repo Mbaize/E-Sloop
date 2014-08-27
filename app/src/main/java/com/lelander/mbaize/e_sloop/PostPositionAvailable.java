@@ -3,9 +3,13 @@ package com.lelander.mbaize.e_sloop;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,13 +26,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
+
+import java.io.ByteArrayOutputStream;
+import java.nio.ByteBuffer;
 
 public class PostPositionAvailable extends ActionBarActivity implements AdapterView.OnItemSelectedListener, DatePickerFragment.DateSetListener {
 
-    private static final int PICK_IMAGE = 1;
+    private static int RESULT_LOAD_IMAGE = 1;
+    private static final int PICK_FROM_GALLERY = 2;
+    Bitmap picBitmap = null;
     ParseUser currentUser;
+    ParseFile boatImage;
     Button mPostButton;
     Button mCancelButton;
     String boatTypeString;
@@ -137,33 +150,60 @@ public class PostPositionAvailable extends ActionBarActivity implements AdapterV
 
     public void PostPosition(View v) {
 
-        captain = ((CheckBox) findViewById(R.id.captainAvailableCheckBox)).isChecked();
-        firstmate = ((CheckBox) findViewById(R.id.firstMateAvailableCheckBox)).isChecked();
-        secondmate = ((CheckBox) findViewById(R.id.secondMateAvailableCheckBox)).isChecked();
-        departure = ((EditText) findViewById(R.id.departureEditText)).getText().toString();
-        destination = ((EditText) findViewById(R.id.destinationEditText)).getText().toString();
-        email = ((EditText) findViewById(R.id.emailContactEditText)).getText().toString();
-        currentUser = ParseUser.getCurrentUser();
+        /*//calculate how many bytes our image consists of.
+        int bytes = picBitmap.getByteCount();
+
+        //or we can calculate bytes this way. Use a different value than 4 if you don't use 32bit images.
+        //int bytes = b.getWidth()*b.getHeight()*4;
+        Log.i("bytes", String.valueOf(bytes));
+        ByteBuffer buffer = ByteBuffer.allocate(bytes); //Create a new buffer
+        //Toast.makeText(PostPositionAvailable.this, bytes.toString(), Toast.LENGTH_LONG).show;
+        picBitmap.copyPixelsToBuffer(buffer); //Move the byte data to the buffer
+
+        byte[] picArray = buffer.array(); //Get the underlying array containing the data.
+*/
+        // Convert it to byte
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        // Compress image to lower quality scale 1 - 100
+        picBitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] picBytes = stream.toByteArray();
+
+        boatImage = new ParseFile("boatPic.jpg", picBytes);
+        boatImage.saveInBackground( new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                captain = ((CheckBox) findViewById(R.id.captainAvailableCheckBox)).isChecked();
+                firstmate = ((CheckBox) findViewById(R.id.firstMateAvailableCheckBox)).isChecked();
+                secondmate = ((CheckBox) findViewById(R.id.secondMateAvailableCheckBox)).isChecked();
+                departure = ((EditText) findViewById(R.id.departureEditText)).getText().toString();
+                destination = ((EditText) findViewById(R.id.destinationEditText)).getText().toString();
+                email = ((EditText) findViewById(R.id.emailContactEditText)).getText().toString();
+                currentUser = ParseUser.getCurrentUser();
 
 
-        ParseObject positionAvailable = new ParseObject("PositionAvailable");
-        positionAvailable.put("captain", captain);
-        positionAvailable.put("firstMate", firstmate);
-        positionAvailable.put("secondMate", secondmate);
-        positionAvailable.put("experiencePref", experiencePref);
-        positionAvailable.put("boatingActivity", boatingActivity);
-        positionAvailable.put("departure", departure);
-        positionAvailable.put("destination", destination);
-        positionAvailable.put("boatType", boatTypeString);
-        positionAvailable.put("email", email);
-        positionAvailable.put("parseUser", currentUser);
-        positionAvailable.saveInBackground();
+                ParseObject positionAvailable = new ParseObject("PositionAvailable");
+                positionAvailable.put("captain", captain);
+                positionAvailable.put("firstMate", firstmate);
+                positionAvailable.put("secondMate", secondmate);
+                positionAvailable.put("experiencePref", experiencePref);
+                positionAvailable.put("boatingActivity", boatingActivity);
+                positionAvailable.put("departure", departure);
+                positionAvailable.put("destination", destination);
+                positionAvailable.put("boatType", boatTypeString);
+                positionAvailable.put("boatImage", boatImage);
+                positionAvailable.put("email", email);
+                positionAvailable.put("parseUser", currentUser);
+                positionAvailable.saveInBackground();
 
-        //Enter code to go to display of position available post
+                //Enter code to go to display of position available post
 
         /*Intent intent = new Intent(this, PositionsAvailableSearchResults.class);
         startActivity(intent);*/
-        finish();
+                finish();
+            }
+        });
+
+
     }
 
     public void setTextViewDate(int year, int month, int day) {
@@ -185,28 +225,48 @@ public class PostPositionAvailable extends ActionBarActivity implements AdapterV
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == PICK_IMAGE && data != null && data.getData() != null) {
-            Uri _uri = data.getData();
-
-            //User had pick an image.
-            Cursor cursor = getContentResolver().query(_uri, new String[] { android.provider.MediaStore.Images.ImageColumns.DATA }, null, null, null);
-            cursor.moveToFirst();
-
-            //Link to the image
-            final String imageFilePath = cursor.getString(0);
-            cursor.close();
-            Toast.makeText(this, imageFilePath, Toast.LENGTH_LONG).show();
-            //boatPic.setVisibility(View.VISIBLE);
-        }
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data){
+
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inSampleSize = 4;
+            Uri selectedImage = data.getData();
+            String[] filePathColumn = { MediaStore.Images.Media.DATA };
+            Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+            cursor.moveToFirst();
+            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
+            String picturePath = cursor.getString(columnIndex);
+            cursor.close();
+            ImageView boatPic = (ImageView) findViewById(R.id.boatImageView);
+            picBitmap = BitmapFactory.decodeFile(picturePath);
+            int height = picBitmap.getHeight();
+            int width = picBitmap.getWidth();
+
+            if (height > 1280 && width > 960){
+                picBitmap = BitmapFactory.decodeFile(picturePath, options);
+                boatPic.setImageBitmap(picBitmap);
+
+                System.out.println("Need to resize");
+
+            }else {
+                boatPic.setImageBitmap(picBitmap);
+                System.out.println("WORKS");
+            }
+            //Toast.makeText(this, imageFilePath.toString(), Toast.LENGTH_LONG).show();
+
+            //boatPic.setImageBitmap(picBitmap); //Not needed since "No pic uploaded" is set as visible by default
+            //boatPic.setVisibility(View.VISIBLE);
+
+
+
+
+        }
     }
 
 
     public void viewGallery(View view) {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE);
+        Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, RESULT_LOAD_IMAGE);
     }
 
     @Override

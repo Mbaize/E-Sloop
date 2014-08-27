@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="5dp"
-    android:background="@drawable/rounded_corner"
+    android:background="@drawable/bg_card"
     android:focusableInTouchMode="true">
 
     <ImageView
@@ -16,8 +16,7 @@
         android:layout_alignParentStart="true"
         android:src="@drawable/sailboat_thumb"
         android:paddingLeft="3dp"
-        android:layout_alignBottom="@+id/email"
-        android:onClick="showFullBoat"/>
+        android:layout_alignBottom="@+id/email"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -151,7 +150,8 @@
         android:textSize="16sp"
         android:paddingLeft="5dp"
         android:paddingTop="5dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="10dp"
+        android:autoLink="email"/>
 
     <TextView
         android:layout_width="wrap_content"

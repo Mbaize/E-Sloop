@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="0dp"
+    android:layout_weight="1">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -80,11 +83,10 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/typeSailingQ"
             android:id="@+id/typeSailingQ"
-            android:layout_below="@+id/boat_type_spinner"
+            android:layout_below="@+id/boatImageView"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="25dp" />
+            android:layout_marginTop="30dp" />
         <TextView
             android:text="@string/boat_type_q"
             android:layout_width="wrap_content"
@@ -221,30 +223,6 @@
             android:layout_alignEnd="@+id/whenSailingQ" />
 
         <Button
-            android:id="@+id/postPositionAvailableButton"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:text="@string/post_position"
-            android:background="@color/seafoamgreen"
-            android:onClick="PostPosition"
-            android:layout_below="@+id/emailContactEditText"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="20dp" />
-
-        <Button
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel_post_button"
-            android:id="@+id/cancelPostAvailableButton"
-            android:onClick="cancelPost"
-            android:background="@color/seafoamgreen"
-            android:layout_below="@+id/emailContactEditText"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp" />
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Upload Boat Picture"
@@ -317,5 +295,41 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:hint="@string/email_address"/>
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:id="@+id/boatImageView"
+            android:layout_below="@+id/boat_type_spinner"
+            android:layout_toRightOf="@+id/crewAvailableCheckBox"
+            android:visibility="visible"
+            android:src="@drawable/no_picture_uploaded"/>
     </RelativeLayout>
 </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        style="?android:attr/buttonBarStyle">
+        <Button
+            android:id="@+id/postPositionAvailableButton"
+            android:layout_height="wrap_content"
+            android:text="@string/post_position"
+            android:background="@color/seafoamgreen"
+            android:onClick="PostPosition"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            style="?android:attr/buttonBarButtonStyle"  />
+
+        <Button
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_post_button"
+            android:id="@+id/cancelPostAvailableButton"
+            android:onClick="cancelPost"
+            android:background="@color/seafoamgreen"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            style="?android:attr/buttonBarButtonStyle"  />
+    </LinearLayout>
+</LinearLayout>

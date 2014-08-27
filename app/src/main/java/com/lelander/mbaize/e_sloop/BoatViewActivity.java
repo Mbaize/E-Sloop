@@ -64,7 +64,7 @@ public class BoatViewActivity extends Activity {
         setContentView(R.layout.activity_boat_view);
         Intent i = getIntent();
         fullBoatImage = i.getStringExtra("boatImage");
-        Toast.makeText(this, fullBoatImage, Toast.LENGTH_LONG).show();
+
         // Locate the ImageView in list_item_position_available_search.xmlrch.xml
         ImageView imgboat = (ImageView) findViewById(R.id.fullscreen_boatImage);
 

@@ -1,5 +1,6 @@
 package com.lelander.mbaize.e_sloop;
 
+import android.app.ListActivity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -12,6 +13,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -47,9 +50,26 @@ public class SearchResultsPositionAvailable extends ActionBarActivity {
         // Execute RemoteDataTask AsyncTask
         new RemoteDataTask().execute();
 
+        // Trying to figure out the onitemclick method to open full picture of boat
+
+        /*ImageView boatPic = (ImageView) findViewById(R.id.boatImage);
+
+        boatPic.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFullBoat(v);
+            }
+        });*/
     }
 
 
+
+    /*public void showFullBoat(View v) {
+        Intent intent = new Intent(this, BoatViewActivity.class);
+        intent.putExtra("boatImage", boatImage);
+        startActivity(intent);
+
+    }*/
 
     public void extractBundle() {
         Bundle ex = getIntent().getExtras();
@@ -260,18 +280,21 @@ public class SearchResultsPositionAvailable extends ActionBarActivity {
                     positionavailablelist);
             // Binds the Adapter to the ListView
             listview.setAdapter(adapter);
-            // Close the progressdialog
+
+            // Close the progress dialog
             mProgressDialog.dismiss();
+
+
         }
     }
 
-    public void showFullBoat(View v) {
+    /*public void showFullBoat(View v) {
         Intent intent = new Intent(this, BoatViewActivity.class);
         String boatImage = v.toString();
         intent.putExtra("boatImage", boatImage);
         startActivity(intent);
 
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

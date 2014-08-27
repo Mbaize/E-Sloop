@@ -2,6 +2,7 @@ package com.lelander.mbaize.e_sloop;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -61,11 +62,40 @@ public class PositionAvailableView extends Activity {
         // Capture position and set results to the ImageView
         // Passes flag images URL into ImageLoader.class
         imageLoader.DisplayImage(boatImage, imgboat);
+
+        /*txtemail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                composeEmail(v);
+            }
+        });*/
+
+
+
+        imgboat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showFullBoat(v);
+            }
+        });
     }
+
+    /*public void composeEmail (View v) {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        String address = email;
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, address);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "E-Sloop post interest");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+
+    }*/
     public void showFullBoat(View v) {
         Intent intent = new Intent(this, BoatViewActivity.class);
         intent.putExtra("boatImage", boatImage);
         startActivity(intent);
 
-    }
+   }
 }

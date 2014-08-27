@@ -1,44 +1,82 @@
 package com.lelander.mbaize.e_sloop;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.parse.GetDataCallback;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseUser;
 
 public class ProfileDisplay extends Activity {
     Button updateButton;
+    ParseImageView mProfileImage;
+    TextView mName, mPosition, mLocation, mExperience, mComments, mCaptainExperience, mCrewExperience;
+    ParseUser user;
+    String mCaptainExperienceString, mCrewExperienceString;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_display);
 
-        Context context = getApplicationContext();
-        SharedPreferences userInfo = context.getSharedPreferences("user_info", MODE_PRIVATE);
-        TextView mName = (TextView) findViewById(R.id.NameDisplay);
-        TextView mPosition = (TextView) findViewById(R.id.PositionDisplay);
-        TextView mLocation = (TextView) findViewById(R.id.LocationDisplay);
-        TextView mExperience = (TextView) findViewById(R.id.ExperienceDisplay);
+        user = ParseUser.getCurrentUser();
 
-        String prefName = userInfo.getString("Name", "");
-        String prefPosition = userInfo.getString("Position", "");
-        String prefLocation = userInfo.getString("Location", "");
-        String prefExperience = userInfo.getString("Experience", "");
+        /*Context context = getApplicationContext();
+        SharedPreferences userInfo = context.getSharedPreferences("user_info", MODE_PRIVATE);*/
+         mName = (TextView) findViewById(R.id.NameDisplay);
+         //mPosition = (TextView) findViewById(R.id.PositionDisplay);
+         mLocation = (TextView) findViewById(R.id.LocationDisplay);
+         mCaptainExperience = (TextView) findViewById(R.id.CaptainExperienceDisplay);
+        mCrewExperience = (TextView) findViewById(R.id.CrewExperienceDisplay);
+        mComments = (TextView) findViewById(R.id.addInfoDisplay);
+         mProfileImage = (ParseImageView) findViewById(R.id.profileDisplayImageView);
+         mProfileImage.setPlaceholder(getResources().getDrawable(R.drawable.no_picture_uploaded));
 
-        mName.setText(prefName);
-        mPosition.setText(prefPosition);
-        mLocation.setText(prefLocation);
-        mExperience.setText(prefExperience);
+        mName.setText(user.getString("name"));
+        //Will need a string builder for positions
+        // mPosition.setText(prefPosition);
+        mLocation.setText(user.getString("location"));
+        mCaptainExperience.setText(String.valueOf(user.getInt("captainExperience")));
+        mCrewExperience.setText(String.valueOf(user.getInt("crewExperience")));
+        mComments.setText(user.getString("comments"));
 
-        Toast.makeText(this, prefName, Toast.LENGTH_LONG).show();
+
+        //Will need a string builder for positions
+        //String prefPosition = user.getString("position");
+        ParseFile profilePic = (ParseFile) user.get("profileImage");
+
+        mProfileImage.setParseFile(profilePic);
+        mProfileImage.loadInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] bytes, ParseException e) {
+                //Log.i ("ParseImageView", "Fetched! Data length: " + bytes.length + ", or exception: " + e.getMessage());
+            }
+        });
+        /*profilePic.getDataInBackground(new GetDataCallback() {
+            @Override
+            public void done(byte[] bytes, ParseException e) {
+                if (e == null){
+
+
+
+
+
+                } else {
+                    Toast.makeText(ProfileDisplay.this, "Sorry, profile picture couldn't be retrieved", Toast.LENGTH_LONG).show();
+                }
+
+            }
+        });*/
+
+
     }
 
     public void startProfileUpdate (View v) {

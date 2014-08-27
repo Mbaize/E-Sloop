@@ -1,188 +1,206 @@
-<ScrollView
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        tools:context="com.lelander.mbaize.e_sloop.ProfileUpdate">
+
+            <TextView
+                android:id="@+id/Name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_update"/>
+
+            <EditText
+                android:id="@+id/NameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:hint="@string/hint_name"/>
+
+            <TextView
+                android:id="@+id/Location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/location_update"/>
+
+            <EditText
+                android:id="@+id/LocationEdit"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_location"/>
+
+            <TextView
+                android:id="@+id/ExperiencePrompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experience_prompt"/>
+
+            <CheckBox
+                android:id="@+id/CaptainCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Captain"
+                android:checked="false"
+                android:onClick="onCheckboxClicked"/>
+
+            <TextView
+                android:id="@+id/ExperienceYears"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experience_years_update"
+                android:paddingLeft="30dp"
+                android:textSize="?android:textAppearanceMedium"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+           <Spinner
+               android:id="@+id/experience_years_captain_spinner"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:paddingLeft="160dp"/>
+
+            <CheckBox
+                android:id="@+id/CrewCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crew"
+                android:checked="false"
+                android:onClick="onCheckboxClicked"/>
+
+            <TextView
+                android:id="@+id/ExperienceYearsCrew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experience_years_update"
+                android:paddingLeft="30dp"
+                android:textSize="?android:textAppearanceMedium"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/experience_years_crew_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"/>
+
+            <TextView
+                android:id="@+id/ExperienceCrewPositions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/experience_crew_positions"
+                android:paddingLeft="30dp"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <CheckBox
+                android:id="@+id/FirstMateCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/first_mate"
+                android:checked="false"
+                android:onClick="onCheckboxClicked"
+                android:layout_marginLeft="50dp" />
+
+            <CheckBox
+                android:id="@+id/SecondMateMateCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/second_mate"
+                android:checked="false"
+                android:onClick="onCheckboxClicked"
+                android:layout_marginLeft="50dp" />
+
+            <CheckBox
+                android:id="@+id/DeckHandCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/deck_hand"
+                android:checked="false"
+                android:onClick="onCheckboxClicked"
+                android:layout_marginLeft="50dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/comments_prompt"
+                android:text="@string/comments_prompt"/>
+
+           <EditText
+                android:id="@+id/CommentsEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:hint="@string/hint_comments"/>
+
+           <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/photo_prompt"
+                android:id="@+id/photo_prompt"/>
+
+           <com.parse.ParseImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:id="@+id/photo_profile"
+                android:paddingLeft="160dp"
+                android:contentDescription="@string/profile_photo"
+                android:src="@drawable/no_picture_uploaded"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/upload_photo"
+                android:id="@+id/button"
+                android:onClick="viewGallery"/>
+
+
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
     <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.lelander.mbaize.e_sloop.ProfileUpdate">
+    android:orientation="horizontal"
+    android:layout_gravity="bottom"
+    style="?android:attr/buttonBarStyle">
 
-        <TextView
-            android:id="@+id/Name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/name_update"/>
+    <Button
+        android:layout_height="wrap_content"
+        android:text="@string/save_changes_button"
+        android:id="@+id/save_changes_button"
+        android:onClick="saveProfile"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:background="@color/seafoamgreen"
+        style="?android:attr/buttonBarButtonStyle"/>
 
-        <EditText
-            android:id="@+id/NameEdit"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:hint="@string/hint_name"/>
+    <Button
+        android:layout_height="wrap_content"
+        android:text="@string/cancel_changes_button"
+        android:id="@+id/cancel_changes_button"
+        android:onClick="cancelChanges"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:background="@color/seafoamgreen"
+        style="?android:attr/buttonBarButtonStyle"/>
 
-        <TextView
-            android:id="@+id/Location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/location_update"/>
-
-        <EditText
-            android:id="@+id/LocationEdit"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_location"/>
-
-        <TextView
-            android:id="@+id/ExperiencePrompt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/experience_prompt"/>
-
-        <CheckBox
-            android:id="@+id/CaptainCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Captain"
-            android:checked="false"
-            android:onClick="onCheckboxClicked"/>
-
-        <TextView
-            android:id="@+id/ExperienceYears"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/experience_years_update"
-            android:paddingLeft="30dp"
-            android:visibility="gone"/>
-
-       <Spinner
-           android:id="@+id/experience_years_captain_spinner"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:paddingLeft="160dp"
-           android:visibility="gone"/>
-
-        <CheckBox
-            android:id="@+id/CrewCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Crew"
-            android:checked="false"
-            android:onClick="onCheckboxClicked"/>
-
-        <TextView
-            android:id="@+id/ExperienceYearsCrew"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/experience_years_update"
-            android:paddingLeft="30dp"
-            android:visibility="gone"/>
-
-        <Spinner
-            android:id="@+id/experience_years_crew_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingLeft="30dp"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/ExperienceCrewPositions"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/experience_crew_positions"
-            android:paddingLeft="30dp"
-            android:visibility="gone"/>
-
-        <CheckBox
-            android:id="@+id/FirstMateCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/first_mate"
-            android:checked="false"
-            android:layout_marginLeft="160dp"
-            android:onClick="onCheckboxClicked"
-            android:visibility="gone"/>
-
-        <CheckBox
-            android:id="@+id/SecondMateMateCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/second_mate"
-            android:checked="false"
-            android:layout_marginLeft="160dp"
-            android:onClick="onCheckboxClicked"
-            android:visibility="gone"/>
-
-        <CheckBox
-            android:id="@+id/DeckHandCheckBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/deck_hand"
-            android:checked="false"
-            android:layout_marginLeft="160dp"
-            android:onClick="onCheckboxClicked"
-            android:visibility="gone"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/comments_prompt"
-            android:text="@string/comments_prompt"/>
-
-       <EditText
-            android:id="@+id/CommentsEdit"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:hint="@string/hint_comments"/>
-
-       <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/photo_prompt"
-            android:id="@+id/photo_prompt"/>
-
-       <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/photo_profile"
-           android:paddingLeft="160dp"
-           android:contentDescription="@string/profile_photo"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/upload_photo"
-            android:id="@+id/button"
-            android:onClick="viewGallery"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/save_changes_button"
-            android:id="@+id/save_changes_button"
-            android:onClick="saveProfile"
-            android:layout_marginTop="20dp"
-            android:layout_weight=".5" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel_changes_button"
-            android:id="@+id/cancel_changes_button"
-            android:onClick="cancelChanges"
-            android:layout_gravity="center_vertical"
-            android:layout_weight=".5" />
-
-
-
-
-
+    </LinearLayout>
 </LinearLayout>
-</ScrollView>

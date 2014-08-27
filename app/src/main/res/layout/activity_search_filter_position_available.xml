@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
+    android:layout_height="0dp"
+    android:layout_weight="1">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -187,30 +191,6 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_marginBottom="5dp" />
 
-        <Button
-            android:id="@+id/searchPositionAvailableButton"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:text="@string/search"
-            android:background="@color/seafoamgreen"
-            android:onClick="searchPositionAvailable"
-            android:layout_below="@+id/searchAvailableToDateButton"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="40dp" />
-
-        <Button
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:text="@string/cancel_search"
-            android:id="@+id/cancelSearchAvailableButton"
-            android:onClick="cancelSearch"
-            android:background="@color/seafoamgreen"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" />
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -311,5 +291,36 @@
             android:checked="false"
             android:layout_below="@+id/searchKetchCheckBox"
             android:layout_toRightOf="@+id/searchKetchCheckBox" />
-    </RelativeLayout>
+
+
+</RelativeLayout>
+
 </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        style="?android:attr/buttonBarStyle">
+        <Button
+            android:id="@+id/searchPositionAvailableButton"
+            android:layout_height="wrap_content"
+            android:text="@string/search"
+            android:background="@color/seafoamgreen"
+            android:onClick="searchPositionAvailable"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            style="?android:attr/buttonBarButtonStyle"/>
+
+        <Button
+            android:layout_height="wrap_content"
+            android:text="@string/cancel_search"
+            android:id="@+id/cancelSearchAvailableButton"
+            android:onClick="cancelSearch"
+            android:background="@color/seafoamgreen"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            style="?android:attr/buttonBarButtonStyle" />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,6 +1,7 @@
 package com.lelander.mbaize.e_sloop;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
@@ -31,6 +32,7 @@ public class SearchResultsPositionWanted extends ActionBarActivity {
     ProgressDialog mProgressDialog;
     PositionWantedSearchListViewAdapter adapter;
     private List<PositionWanted> positionwantedlist = null;
+    String address = "Email address";
 
 
     Boolean captain, firstMate, secondMate, commercial, racing, recreational, catamaran, catboat, ketch, schooner, sloop, sunfish, yawl;
@@ -55,6 +57,16 @@ public class SearchResultsPositionWanted extends ActionBarActivity {
     }
 
 
+    public void composeEmail() {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        //address = ;
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_EMAIL, address);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "E-Sloop post interest");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
 
     public void extractBundle() {
         Bundle ex = getIntent().getExtras();
@@ -262,7 +274,7 @@ public class SearchResultsPositionWanted extends ActionBarActivity {
                if (catamaran != null) {
                    if (catamaran){
                        ParseQuery<ParseObject> catamaranQuery = ParseQuery.getQuery("PositionWanted");
-                   catamaranQuery.whereEqualTo("catamaran", true);
+                       catamaranQuery.whereEqualTo("catamaran", true);
                        boatTypeQueries.add(catamaranQuery);
                    }
                }
@@ -359,7 +371,7 @@ public class SearchResultsPositionWanted extends ActionBarActivity {
     }
 
     public void showFullProfileImage(View v) {
-        Intent intent = new Intent(this, BoatViewActivity.class);
+        Intent intent = new Intent(this, ProfilePictureViewActivity.class);
         String profileImage = v.toString();
         intent.putExtra("profileImage", profileImage);
         startActivity(intent);

@@ -91,7 +91,7 @@ public class PositionWantedSearchListViewAdapter extends BaseAdapter {
 
             @Override
             public void onClick(View arg0) {
-                // Send single item click data to SingleItemView Class
+                // Send single item click data to PositionWantedView Class
 
                 Intent intent = new Intent(context, PositionWantedView.class);
                 // Pass all data boatImage

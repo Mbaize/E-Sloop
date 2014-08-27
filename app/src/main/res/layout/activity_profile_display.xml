@@ -24,7 +24,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/user_name"
         android:id="@+id/UserNameDisplay"
-        android:layout_below="@+id/imageView" />
+        android:layout_below="@+id/profileDisplayImageView" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,8 +78,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/experience"
-        android:id="@+id/Experience"
+        android:text="@string/captainExperiencePrompt"
+        android:id="@+id/CaptainExperiencePrompt"
         android:layout_below="@+id/Location"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
@@ -89,7 +89,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="N/A"
-        android:id="@+id/ExperienceDisplay"
+        android:id="@+id/CaptainExperienceDisplay"
         android:layout_below="@+id/LocationDisplay"
         android:layout_alignLeft="@+id/LocationDisplay"
         android:layout_alignStart="@+id/LocationDisplay" />
@@ -98,9 +98,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/comments"
-        android:id="@+id/Comments"
-        android:layout_below="@+id/Experience"
+        android:text="@string/additional_info"
+        android:id="@+id/addInfo"
+        android:layout_below="@+id/crewExperiencePrompt"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -120,26 +120,56 @@
         android:text="@string/years"
         android:id="@+id/yearsTextView"
         android:layout_below="@+id/LocationDisplay"
-        android:layout_toRightOf="@+id/ExperienceDisplay"
+        android:layout_toRightOf="@+id/CaptainExperienceDisplay"
         android:layout_marginLeft="3dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/comments_placeholder"
-        android:id="@+id/commentsDisplay"
-        android:layout_below="@+id/Comments"
+        android:text="@string/add_info_placeholder"
+        android:id="@+id/addInfoDisplay"
+        android:layout_below="@+id/addInfo"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <ImageView
+    <com.parse.ParseImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:id="@+id/imageView"
+        android:id="@+id/profileDisplayImageView"
         android:layout_below="@+id/profile_display_header"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/crew_experience_prompt"
+        android:id="@+id/crewExperiencePrompt"
+        android:layout_below="@+id/CaptainExperiencePrompt"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/CrewExperienceDisplay"
+        android:text="@string/na"
+        android:layout_alignTop="@+id/crewExperiencePrompt"
+        android:layout_alignLeft="@+id/CaptainExperienceDisplay"
+        android:layout_alignStart="@+id/CaptainExperienceDisplay" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/years"
+        android:id="@+id/textView3"
+        android:layout_alignTop="@+id/CrewExperienceDisplay"
+        android:layout_toRightOf="@+id/CrewExperienceDisplay"
+        android:layout_marginLeft="3dp" />
 
 
 </RelativeLayout>
